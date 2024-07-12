@@ -1,4 +1,5 @@
-﻿using Microsoft.OpenApi.Any;
+﻿using DesafioPitang.WebApi.Configuration;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 
 namespace DesafioPitang.WebApi
@@ -13,6 +14,8 @@ namespace DesafioPitang.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDependencyInjectionConfiguration();
+
 
             services.AddSwaggerGen(c =>
             {
