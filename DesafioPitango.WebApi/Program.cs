@@ -1,25 +1,29 @@
-var builder = WebApplication.CreateBuilder(args);
+using DesafioPitang.WebApi;
+using log4net;
+using log4net.Config;
+using Microsoft.AspNetCore;
+using System.Reflection;
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+public static class Program
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    private static readonly ILog _log = LogManager.GetLogger(typeof(Program));
+
+    public static void Main(string[] args)
+    {
+        try
+        {
+            var logRepository = LogManager.GetRepository(Assembly.GetCallingAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+
+            _log.Info("Iniciando API");
+            var webHost = WebHost.CreateDefaultBuilder(args).UseStartup<Startup>();
+            webHost.Build().Run();
+        }
+        catch (Exception ex)
+        {
+            _log.Error("Erro Fatal", ex);
+            throw;
+        }
+    }
 }
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
