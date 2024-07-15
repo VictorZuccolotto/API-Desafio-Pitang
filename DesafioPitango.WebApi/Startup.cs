@@ -6,15 +6,18 @@ namespace DesafioPitang.WebApi
 {
     public class Startup
     {
-        public Startup()
+        public IConfiguration Configuracao { get; }
+        public Startup(IConfiguration configuracao)
         {
-
+            Configuracao = configuracao;
         }
+
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
             services.AddDependencyInjectionConfiguration();
+            services.AddDatabaseConfiguration(Configuracao);
 
 
             services.AddSwaggerGen(c =>
