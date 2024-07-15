@@ -15,5 +15,7 @@ namespace DesafioPitang.Entities.Entities
         public string Status { get; set; }
         public DateTime DataCriacao { get; set; }
 
+        public Paciente Paciente { get; set; }
+
     }
 }

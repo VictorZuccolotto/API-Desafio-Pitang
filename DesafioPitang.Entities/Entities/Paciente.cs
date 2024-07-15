@@ -13,5 +13,7 @@ namespace DesafioPitang.Entities.Entities
         public DateTime DataNascimento { get; set; }
         public DateTime DataCriacao { get; set; }
 
+        public List<Agendamento> Agendamentos { get; set; }  
+
     }
 }
