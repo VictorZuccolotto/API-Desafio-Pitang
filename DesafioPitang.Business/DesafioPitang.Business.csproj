@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Business\" />
+    <ProjectReference Include="..\DesafioPitang.Business.Interface\DesafioPitang.Business.Interface.csproj" />
   </ItemGroup>
 
 </Project>
