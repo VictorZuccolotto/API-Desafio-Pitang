@@ -1,4 +1,6 @@
-﻿using DesafioPitang.WebApi.Middleware;
+﻿using DesafioPitang.Repository.Interface;
+using DesafioPitang.Repository;
+using DesafioPitang.WebApi.Middleware;
 
 namespace DesafioPitang.WebApi.Configuration
 {
@@ -9,6 +11,8 @@ namespace DesafioPitang.WebApi.Configuration
             InjectServices(services);
             InjectRepositories(services);
             InjectMidddlewares(services);
+
+            services.AddScoped<ITransactionManager, TransactionManager>();
         }
 
         private static void InjectRepositories(IServiceCollection services)
