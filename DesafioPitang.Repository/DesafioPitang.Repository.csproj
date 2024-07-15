@@ -7,16 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.32" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.32" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DesafioPitang.Entities\DesafioPitang.Entities.csproj" />
+    <ProjectReference Include="..\DesafioPitang.Repository.Interface\DesafioPitang.Repository.Interface.csproj" />
   </ItemGroup>
 
 </Project>
