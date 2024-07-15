@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\DesafioPitang.Repository\DesafioPitang.Repository.csproj" />
     <ProjectReference Include="..\DesafioPitang.Utils\DesafioPitang.Utils.csproj" />
   </ItemGroup>
