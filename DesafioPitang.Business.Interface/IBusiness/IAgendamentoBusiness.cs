@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DesafioPitang.Entities.DTOs;
+using DesafioPitang.Entities.Entities;
+using DesafioPitang.Entities.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +11,8 @@ namespace DesafioPitang.Business.Interface.IBusiness
 {
     public interface IAgendamentoBusiness
     {
+        Task<int> CadastrarAgendamento(CadastroAgendamentoModel agendamento);
+        Task<List<HorarioDisponivelDTO>> ListarHorariosDisponiveisByDia(DateTime dia);
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DesafioPitang.WebApi.Configuration;
+using DesafioPitang.WebApi.Middleware;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 
@@ -43,6 +44,7 @@ namespace DesafioPitang.WebApi
 
             app.UseRouting();
 
+            app.UseMiddleware<ApiMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

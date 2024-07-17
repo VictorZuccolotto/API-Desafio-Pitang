@@ -26,7 +26,7 @@ namespace DesafioPitang.Repository.Map
                    .IsRequired();
 
             builder.Property(e => e.DataNascimento)
-                   .HasColumnName("dat_nasicmento")
+                   .HasColumnName("dat_nascimento")
                    .IsRequired();
 
             builder.Property(e => e.DataCriacao)

@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DesafioPitang.Business.Interface.IBusiness;
+using DesafioPitang.Entities.DTOs;
+using DesafioPitang.Entities.Model;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace DesafioPitang.WebApi.Controllers
@@ -7,19 +10,17 @@ namespace DesafioPitang.WebApi.Controllers
     [ApiController]
     public class PacienteController : ControllerBase
     {
-        [HttpGet]
-        public void Get()
+        private readonly IPacienteBusiness _pacienteBusiness;
+
+        public PacienteController(IPacienteBusiness pacienteBusiness)
         {
+            _pacienteBusiness = pacienteBusiness;
         }
 
-        [HttpGet("{id}")]
-        public void Get(int id)
+        [HttpGet("agendamentos")]
+        public async Task<ActionResult<List<AgendamentoDTO>>> Get(int pacienteId)
         {
-        }
-
-        [HttpPost]
-        public void Post([FromBody] string paciente)
-        {
+            return await _pacienteBusiness.ListarAgentamentosDTOFromPacienteById(pacienteId);
         }
 
     }
