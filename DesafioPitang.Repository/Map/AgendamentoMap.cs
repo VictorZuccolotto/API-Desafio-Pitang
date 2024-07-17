@@ -21,6 +21,10 @@ namespace DesafioPitang.Repository.Map
                    .HasColumnName("id_agendamento")
                    .IsRequired();
 
+            builder.Property(e => e.PacienteId)
+                   .HasColumnName("id_paciente")
+                   .IsRequired();
+
             builder.Property(e => e.DataAgendamento)
                    .HasColumnName("dat_agendamento")
                    .IsRequired();

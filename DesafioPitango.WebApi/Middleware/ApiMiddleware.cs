@@ -1,5 +1,6 @@
 ﻿using DesafioPitang.Repository.Interface;
 using DesafioPitang.Utils.Attributes;
+using DesafioPitang.Utils.Exceptions;
 using DesafioPitang.Utils.Messages;
 using DesafioPitang.Utils.Responses;
 using log4net;
@@ -61,6 +62,10 @@ namespace DesafioPitang.WebApi.Middleware
             HttpStatusCode statusCode;
             switch (ex)
             {
+                case BadRequestException:
+                    messages.Add(ex.Message);
+                    statusCode = HttpStatusCode.BadRequest;
+                    break;
                 default:
                     messages.Add(InfraMessages.InternalServerError);
                     statusCode = HttpStatusCode.InternalServerError;
