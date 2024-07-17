@@ -19,6 +19,7 @@ namespace DesafioPitang.WebApi
             services.AddControllers();
             services.AddDependencyInjectionConfiguration();
             services.AddDatabaseConfiguration(Configuracao);
+            services.AddFluentConfiguration();
 
 
             services.AddSwaggerGen(c =>

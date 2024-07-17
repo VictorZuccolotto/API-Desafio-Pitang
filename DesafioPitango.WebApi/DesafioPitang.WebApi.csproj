@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="log4net" Version="2.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.32" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.32" />
@@ -18,6 +19,7 @@
     <ProjectReference Include="..\DesafioPitang.Business\DesafioPitang.Business.csproj" />
     <ProjectReference Include="..\DesafioPitang.Repository\DesafioPitang.Repository.csproj" />
     <ProjectReference Include="..\DesafioPitang.Utils\DesafioPitang.Utils.csproj" />
+    <ProjectReference Include="..\DesafioPitang.Validators\DesafioPitang.Validators.csproj" />
   </ItemGroup>
 
 </Project>
