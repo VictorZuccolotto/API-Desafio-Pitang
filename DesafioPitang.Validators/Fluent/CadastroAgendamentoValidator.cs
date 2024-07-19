@@ -13,14 +13,14 @@ namespace DesafioPitang.Validators.Fluent
     {
         public CadastroAgendamentoValidator()
         {
-            RuleFor(cadastro => cadastro.Agendamento.HoraAgendamento)
+            RuleFor(cadastro => cadastro.Agendamento.Horario)
                                                     .NotNull()
                                                     .Must(horario => horario.Minutes == 0 && horario.Seconds == 0 && horario.Milliseconds == 0)
                                                         .WithMessage(AgendamentoMessages.AgendamentoDeHoraEmHora)
                                                     .Must(horario => horario.Hours >=6 && horario.Hours <= 19)
                                                         .WithMessage(AgendamentoMessages.HorarioParaAgendamento);
 
-            RuleFor(cadastro => cadastro.Agendamento.DataAgendamento)
+            RuleFor(cadastro => cadastro.Agendamento.Data)
                                                     .NotEmpty()
                                                     .NotNull()
                                                     .GreaterThanOrEqualTo(DateTime.Now.Date)

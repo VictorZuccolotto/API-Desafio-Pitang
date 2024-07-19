@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesafioPitang.Entities.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,22 @@ namespace DesafioPitang.Entities.DTOs
 {
     public class AgendamentoDTO
     {
-        public DateTime DataAgendamento { get; set; }
+        public AgendamentoDTO()
+        {
+            
+        }
+        public AgendamentoDTO(Agendamento agendamento)
+        {
+            Data = agendamento.DataAgendamento;
+            Horario = agendamento.HoraAgendamento;
+        }
 
-        public TimeSpan HoraAgendamento { get; set; }
+        public DateTime Data { get; set; }
 
+        public TimeSpan Horario { get; set; }
+
+        public string Status { get; set; }
+
+        public bool Realizado { get; set; }
     }
 }

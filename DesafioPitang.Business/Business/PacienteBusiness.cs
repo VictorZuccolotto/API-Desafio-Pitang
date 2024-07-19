@@ -21,10 +21,10 @@ namespace DesafioPitang.Business.Interface.IBusiness
         public async Task<List<AgendamentoDTO>> ListarAgentamentosDTOFromPacienteById(int pacienteId)
         {
             var agendamentos = await _agendamentoRepository.ListarAgentamentosFromPacienteById(pacienteId);
-            return agendamentos.Select(x => new AgendamentoDTO()
+            return agendamentos.Select(x => new AgendamentoDTO(x)
             {
-                DataAgendamento = x.DataAgendamento,
-                HoraAgendamento = x.HoraAgendamento
+                Realizado = x.Status == "Realizado",
+                Status = x.Status
             }).ToList();
         }
     }

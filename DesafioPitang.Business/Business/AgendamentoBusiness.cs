@@ -24,31 +24,32 @@ namespace DesafioPitang.Business.Business
             _pacienteRepository = pacienteRepository;
         }
 
-        public async Task<int> CadastrarAgendamento(CadastroAgendamentoModel agendamento)
+        public async Task<CadastroAgendamentoDTO> CadastrarAgendamento(CadastroAgendamentoModel agendamento)
         {
             //IF nao trouxe id
             int userId;
+            Paciente paciente;
             if (agendamento.Paciente.Id == null)
             {
                 //Criar paciente e retornar o ID
-                var user = await _pacienteRepository.Add(new Paciente()
+                paciente = await _pacienteRepository.Add(new Paciente()
                 {
                     Nome = agendamento.Paciente.Nome,
                     DataNascimento = agendamento.Paciente.DataNascimento,
                     DataCriacao = DateTime.Now
                 });
-                userId = user.Id;
+                userId = paciente.Id;
             }
             //ELSE trouxe id
             else
             {
                 //VALIDAÇÃO data de nascimento e nome
-                var paciente = await _pacienteRepository.GetById(agendamento.Paciente.Id.Value);
+                paciente = await _pacienteRepository.GetById(agendamento.Paciente.Id.Value);
                 PacienteMatchingValidator.Validar(agendamento.Paciente, paciente);
                 userId = paciente.Id;
 
                 //Já não está agendado para esse horario e dia
-                if (await _agendamentoRepository.IsPacienteByIdAgendadoByDiaAndHora(userId, agendamento.Agendamento.DataAgendamento.Date, agendamento.Agendamento.HoraAgendamento))
+                if (await _agendamentoRepository.IsPacienteByIdAgendadoByDiaAndHora(userId, agendamento.Agendamento.Data.Date, agendamento.Agendamento.Horario))
                 {
                     throw new BadRequestException(AgendamentoMessages.JaAgendado);
                 }
@@ -56,34 +57,42 @@ namespace DesafioPitang.Business.Business
             }
 
             //Horario do dia vago
-            if (!await _agendamentoRepository.IsHorarioVagoByDia(agendamento.Agendamento.HoraAgendamento, agendamento.Agendamento.DataAgendamento.Date))
+            if (!await _agendamentoRepository.IsHorarioVagoByDia(agendamento.Agendamento.Horario, agendamento.Agendamento.Data.Date))
             {
                 throw new BadRequestException(AgendamentoMessages.HorarioCheio);
             }
             //Nao esgotou as 20 vagas do dia
-            if(!await _agendamentoRepository.IsDiaVago(agendamento.Agendamento.DataAgendamento))
+            if(!await _agendamentoRepository.IsDiaVago(agendamento.Agendamento.Data))
             {
                 throw new BadRequestException(AgendamentoMessages.DiaCheio);
             }
 
 
-            await _agendamentoRepository.Add(new Agendamento()
+            var agendamentoResult = await _agendamentoRepository.Add(new Agendamento()
             {
                 PacienteId = userId,
-                DataAgendamento = agendamento.Agendamento.DataAgendamento,
-                HoraAgendamento = agendamento.Agendamento.HoraAgendamento,
+                DataAgendamento = agendamento.Agendamento.Data,
+                HoraAgendamento = agendamento.Agendamento.Horario,
                 DataCriacao = DateTime.Now,
                 Status = "Pendente"
             });
 
-            return userId;
+            return new CadastroAgendamentoDTO()
+            {
+                Paciente = new PacienteDTO(paciente),
+                Agendamento = new AgendamentoDTO(agendamentoResult)
+                //{
+                //    Realizado = agendamentoResult.Status == "Realizado",
+                //    Status = agendamentoResult.Status
+                //}
+            };
         }
 
         public async Task<List<HorarioDisponivelDTO>> ListarHorariosDisponiveisByDia(DateTime dia)
         {
             var horarios = await _agendamentoRepository.ListarHorariosByDia(dia.Date);
 
-            var todosHorarios = Enumerable.Range(6, 19).Select(h => new TimeSpan(h, 0, 0)).ToList();
+            var todosHorarios = Enumerable.Range(6, 14).Select(h => new TimeSpan(h, 0, 0)).ToList();
             foreach (var horario in todosHorarios)
             {
                 if (!horarios.Any(r => r.Horario == horario))
