@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="Messages\AgendamentoMessages.Designer.cs">
+      <DependentUpon>AgendamentoMessages.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="Messages\InfraMessages.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -15,6 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Messages\AgendamentoMessages.resx">
+      <LastGenOutput>AgendamentoMessages.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Messages\InfraMessages.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>InfraMessages.Designer.cs</LastGenOutput>

@@ -4,6 +4,8 @@ using DesafioPitang.Entities.Entities;
 using DesafioPitang.Entities.Model;
 using DesafioPitang.Repository.Interface.IRepositories;
 using DesafioPitang.Utils.Exceptions;
+using DesafioPitang.Utils.Messages;
+using DesafioPitang.Validators.Manual;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,26 +43,27 @@ namespace DesafioPitang.Business.Business
             else
             {
                 //VALIDAÇÃO data de nascimento e nome
-                userId = agendamento.Paciente.Id.Value;
-
+                var paciente = await _pacienteRepository.GetById(agendamento.Paciente.Id.Value);
+                PacienteMatchingValidator.Validar(agendamento.Paciente, paciente);
+                userId = paciente.Id;
 
                 //Já não está agendado para esse horario e dia
                 if (await _agendamentoRepository.IsPacienteByIdAgendadoByDiaAndHora(userId, agendamento.Agendamento.DataAgendamento.Date, agendamento.Agendamento.HoraAgendamento))
                 {
-                    throw new BadRequestException("Você já está agendado nesse horário");
+                    throw new BadRequestException(AgendamentoMessages.JaAgendado);
                 }
 
             }
 
             //Horario do dia vago
-            if (!await _agendamentoRepository.IsHorarioVagoByDia(agendamento.Agendamento.HoraAgendamento, agendamento.Agendamento.DataAgendamento))
+            if (!await _agendamentoRepository.IsHorarioVagoByDia(agendamento.Agendamento.HoraAgendamento, agendamento.Agendamento.DataAgendamento.Date))
             {
-                throw new BadRequestException("Horario lotado");
+                throw new BadRequestException(AgendamentoMessages.HorarioCheio);
             }
             //Nao esgotou as 20 vagas do dia
             if(!await _agendamentoRepository.IsDiaVago(agendamento.Agendamento.DataAgendamento))
             {
-                throw new BadRequestException("Acabaram as vagas desse dia");
+                throw new BadRequestException(AgendamentoMessages.DiaCheio);
             }
 
 
