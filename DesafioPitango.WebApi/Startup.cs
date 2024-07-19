@@ -2,6 +2,7 @@
 using DesafioPitang.WebApi.Middleware;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using tusdotnet.Helpers;
 
 namespace DesafioPitang.WebApi
 {
@@ -20,6 +21,15 @@ namespace DesafioPitang.WebApi
             services.AddDependencyInjectionConfiguration();
             services.AddDatabaseConfiguration(Configuracao);
             services.AddFluentConfiguration();
+
+            services.AddCors(o => o.AddPolicy("CORS_POLICY", builder =>
+            {
+                builder.AllowAnyHeader()
+                       .AllowAnyOrigin()
+                       //.AllowCredentials()
+                       .AllowAnyMethod()
+                       .WithExposedHeaders(CorsHelper.GetExposedHeaders());
+            }));
 
 
             services.AddSwaggerGen(c =>
@@ -44,6 +54,8 @@ namespace DesafioPitang.WebApi
             });
 
             app.UseRouting();
+
+            app.UseCors("CORS_POLICY");
 
             app.UseMiddleware<ApiMiddleware>();
 

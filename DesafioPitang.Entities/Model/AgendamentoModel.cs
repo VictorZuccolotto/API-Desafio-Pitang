@@ -8,8 +8,7 @@ namespace DesafioPitang.Entities.Model
 {
     public class AgendamentoModel
     {
-        public int? PacienteId { get; set; }
-        public DateTime DataAgendamento { get; set; }
-        public TimeSpan HoraAgendamento { get; set; }
+        public DateTime Data { get; set; }
+        public TimeSpan Horario { get; set; }
     }
 }

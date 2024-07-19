@@ -28,7 +28,7 @@ namespace DesafioPitang.WebApi.Controllers
 
         [HttpPost]
         [Transaction]
-        public async Task<ActionResult<int>> Post([FromBody] CadastroAgendamentoModel agendamento)
+        public async Task<ActionResult<CadastroAgendamentoDTO>> Post([FromBody] CadastroAgendamentoModel agendamento)
         {
             return await _agendamentoBusiness.CadastrarAgendamento(agendamento);
         }

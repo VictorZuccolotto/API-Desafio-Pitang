@@ -11,7 +11,7 @@ namespace DesafioPitang.Business.Interface.IBusiness
 {
     public interface IAgendamentoBusiness
     {
-        Task<int> CadastrarAgendamento(CadastroAgendamentoModel agendamento);
+        Task<CadastroAgendamentoDTO> CadastrarAgendamento(CadastroAgendamentoModel agendamento);
         Task<List<HorarioDisponivelDTO>> ListarHorariosDisponiveisByDia(DateTime dia);
 
     }
