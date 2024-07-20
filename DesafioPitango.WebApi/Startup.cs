@@ -25,7 +25,7 @@ namespace DesafioPitang.WebApi
             services.AddCors(o => o.AddPolicy("CORS_POLICY", builder =>
             {
                 builder.AllowAnyHeader()
-                       .AllowAnyOrigin()
+                       .WithOrigins(Configuracao["AllowedOrigins"])
                        //.AllowCredentials()
                        .AllowAnyMethod()
                        .WithExposedHeaders(CorsHelper.GetExposedHeaders());
