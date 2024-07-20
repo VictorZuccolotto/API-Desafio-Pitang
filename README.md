@@ -2,4 +2,4 @@
 
 ## Link do site para testar a aplicação 
 
-<http://pitang.zuccolotto.dev>
+<https://pitang.zuccolotto.dev>
