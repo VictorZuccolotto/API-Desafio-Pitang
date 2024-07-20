@@ -3,21 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioPitang.WebApi", "DesafioPitang.WebApi.csproj", "{814017BC-A088-469D-AF1D-25F94DB869FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioPitang.WebApi", "DesafioPitang.WebApi.csproj", "{814017BC-A088-469D-AF1D-25F94DB869FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioPitang.Business", "..\DesafioPitang.Business\DesafioPitang.Business.csproj", "{4811AB74-60B1-46A4-BCCC-211EF9DF2EEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioPitang.Business", "..\DesafioPitang.Business\DesafioPitang.Business.csproj", "{4811AB74-60B1-46A4-BCCC-211EF9DF2EEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioPitang.Business.Interface", "..\DesafioPitang.Business.Interface\DesafioPitang.Business.Interface.csproj", "{97CFEF47-15E2-4F28-9DA8-5ADD40C791D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioPitang.Business.Interface", "..\DesafioPitang.Business.Interface\DesafioPitang.Business.Interface.csproj", "{97CFEF47-15E2-4F28-9DA8-5ADD40C791D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioPitang.Entities", "..\DesafioPitang.Entities\DesafioPitang.Entities.csproj", "{56D3094B-54D5-4BB7-8725-8E4A98A401AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioPitang.Entities", "..\DesafioPitang.Entities\DesafioPitang.Entities.csproj", "{56D3094B-54D5-4BB7-8725-8E4A98A401AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioPitang.Validators", "..\DesafioPitang.Validators\DesafioPitang.Validators.csproj", "{54F7D498-81A2-41BF-AF3C-3C2DF54FFDDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioPitang.Validators", "..\DesafioPitang.Validators\DesafioPitang.Validators.csproj", "{54F7D498-81A2-41BF-AF3C-3C2DF54FFDDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioPitang.Repository", "..\DesafioPitang.Repository\DesafioPitang.Repository.csproj", "{C9415723-49CC-4146-8CC9-F48C89DB93E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioPitang.Repository", "..\DesafioPitang.Repository\DesafioPitang.Repository.csproj", "{C9415723-49CC-4146-8CC9-F48C89DB93E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioPitang.Repository.Interface", "..\DesafioPitang.Repository.Interface\DesafioPitang.Repository.Interface.csproj", "{507068D5-43CC-4D1E-822D-14ECE9884D51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioPitang.Repository.Interface", "..\DesafioPitang.Repository.Interface\DesafioPitang.Repository.Interface.csproj", "{507068D5-43CC-4D1E-822D-14ECE9884D51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioPitang.Utils", "..\DesafioPitang.Utils\DesafioPitang.Utils.csproj", "{ACC2754A-D3EC-47EB-9B01-7CB7FD223380}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioPitang.Utils", "..\DesafioPitang.Utils\DesafioPitang.Utils.csproj", "{ACC2754A-D3EC-47EB-9B01-7CB7FD223380}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioPitang.UnitTests", "..\DesafioPitang.UnitTests\DesafioPitang.UnitTests.csproj", "{A6F2F416-2A50-4DEE-A5AA-920BCDFE1ACD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{ACC2754A-D3EC-47EB-9B01-7CB7FD223380}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACC2754A-D3EC-47EB-9B01-7CB7FD223380}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACC2754A-D3EC-47EB-9B01-7CB7FD223380}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6F2F416-2A50-4DEE-A5AA-920BCDFE1ACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6F2F416-2A50-4DEE-A5AA-920BCDFE1ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6F2F416-2A50-4DEE-A5AA-920BCDFE1ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6F2F416-2A50-4DEE-A5AA-920BCDFE1ACD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
